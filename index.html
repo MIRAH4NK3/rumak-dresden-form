@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rumak Logistik GmbH – Кандидатстване (Дрезден)</title>
+  <style>
+    :root { --bg:#f7f7fb; --card:#ffffff; --accent:#1b7f3b; --text:#222; --muted:#666; --danger:#b00020; --pill:#e7f4ec; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    header { background:var(--accent); color:#fff; padding:18px 16px; }
+    header .top { max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    header h1 { margin:6px 0 0 0; font-size:22px; }
+    header p { margin:6px 0 0 0; opacity:.95; }
+    .lang { display:flex; gap:8px; align-items:center; }
+    .lang label { font-weight:600; }
+    select#lang { padding:8px 10px; border-radius:10px; border:0; font-weight:600; }
+    main { max-width:720px; margin:22px auto; padding:0 16px; }
+    .card { background:var(--card); border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    label { display:block; font-weight:600; margin:14px 0 6px; }
+    input, select, textarea { width:100%; padding:12px 12px; border:1px solid #d8dbe2; border-radius:10px; font-size:16px; }
+    input:focus, select:focus, textarea:focus { outline:2px solid #cde9d6; border-color:#9fd6b4; }
+    .hint { color:var(--muted); font-size:13px; margin-top:4px; }
+    .required::after { content:" *"; color:var(--danger); }
+    .actions { display:flex; gap:12px; margin-top:16px; align-items:center; flex-wrap:wrap; }
+    button { background:var(--accent); color:#fff; border:0; padding:14px 18px; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer; }
+    button:hover { filter:brightness(0.95); }
+    .note { font-size:14px; color:var(--muted); }
+    footer { text-align:center; color:var(--muted); font-size:13px; margin:24px 0 32px; }
+    .pill { display:inline-block; background:var(--pill); color:#1f7a3f; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <div>
+        <div class="pill" id="hdr-pill">Rumak Logistik GmbH – Партньор на Amazon</div>
+        <h1 id="hdr-title">Куриер / Шофьор – Дрезден</h1>
+        <p id="hdr-sub">Незабавен старт · 15,70 €/ч + 14 €/ден · Осигурена квартира</p>
+      </div>
+      <div class="lang">
+        <label for="lang" id="lang-label">Език:</label>
+        <select id="lang">
+          <option value="bg" selected>Български</option>
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="uk">Українська</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <!-- Replace the email value below with your final recruiting email -->
+      <form id="apply-form" action="https://formsubmit.co/dresden.delivery.jobs@gmail.com" method="POST">
+        <!-- formsubmit controls (values will be set by JS based on language) -->
+        <input type="hidden" name="_subject" id="fs-subject" value="Нова кандидатура – Курир Дрезден">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_autoresponse" id="fs-autoresponse" value="Благодарим Ви за интереса към Rumak Logistik GmbH (Дрезден). Моля, изпратете CV като отговор на този имейл или директно на dresden.delivery.jobs@gmail.com, за да ускорим обработката.">
+        <input type="hidden" name="_next" id="fs-next" value="thankyou.html">
+
+        <div class="row">
+          <div style="flex:1 1 300px">
+            <label class="required" id="lbl-name">Име и фамилия</label>
+            <input type="text" name="Name" id="inp-name" placeholder="Иван Петров" required>
+          </div>
+          <div style="flex:1 1 220px">
+            <label class="required" id="lbl-phone">Телефон (WhatsApp)</label>
+            <input type="tel" name="Phone" id="inp-phone" placeholder="+49 151 23456789" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1 1 260px">
+            <label class="required" id="lbl-email">Имейл</label>
+            <input type="email" name="Email" id="inp-email" placeholder="name@example.com" required>
+          </div>
+          <div style="flex:1 1 180px">
+            <label class="required" id="lbl-city">Град / Местоположение</label>
+            <input type="text" name="Location" id="inp-city" placeholder="Дрезден / Лайпциг / ..." required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1 1 160px">
+            <label class="required" id="lbl-license">Шофьорска книжка</label>
+            <select name="License" id="sel-license" required>
+              <option value="" id="opt-choose">Изберете…</option>
+              <option id="opt-b">B (леки автомобили)</option>
+              <option id="opt-ce">CE (камиони)</option>
+              <option id="opt-none">Нямам</option>
+            </select>
+          </div>
+          <div style="flex:1 1 160px">
+            <label class="required" id="lbl-start">Готовност за старт</label>
+            <select name="Start" id="sel-start" required>
+              <option value="" id="opt-start-choose">Изберете…</option>
+              <option id="opt-now">Веднага</option>
+              <option id="opt-2w">До 2 седмици</option>
+              <option id="opt-1m">До 1 месец</option>
+            </select>
+          </div>
+          <div style="flex:1 1 200px">
+            <label id="lbl-lang">Езици</label>
+            <select name="Languages" id="sel-lang">
+              <option id="opt-nolang">Без език</option>
+              <option>Български</option>
+              <option>Украински</option>
+              <option>Руски</option>
+              <option>Немски (основно)</option>
+              <option>Английски (основно)</option>
+            </select>
+            <div class="hint" id="hint-lang">Език не е задължителен.</div>
+          </div>
+        </div>
+
+        <label id="lbl-note">Бележка (по желание)</label>
+        <textarea name="Note" id="inp-note" rows="4" placeholder="Кратка информация или въпрос…"></textarea>
+
+        <label>
+          <input type="checkbox" name="Consent" id="chk-consent" required>
+          <span id="lbl-consent">Съгласен/на съм данните ми да бъдат използвани за подбор по тази позиция.</span>
+        </label>
+
+        <!-- Honeypot -->
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="actions">
+          <button type="submit" id="btn-submit">Изпрати кандидатура</button>
+          <span class="note" id="note-bottom">След изпращане ще получите автоматичен имейл с инструкции да прикачите CV.</span>
+        </div>
+      </form>
+    </div>
+
+    <p class="note" style="margin-top:14px" id="note-direct">
+      Забележка: Ако предпочитате директно, изпратете CV + телефон на <strong>dresden.delivery.jobs@gmail.com</strong> и в тема напишете <strong>DRIVER BG-FB</strong>.
+    </p>
+  </main>
+
+  <footer>
+    © Rumak Logistik GmbH – Hiring Dresden
+  </footer>
+
+<script>
+const t = {
+  bg: {
+    pill: "Rumak Logistik GmbH – Партньор на Amazon",
+    title: "Куриер / Шофьор – Дрезден",
+    sub: "Незабавен старт · 15,70 €/ч + 14 €/ден · Осигурена квартира",
+    langLabel: "Език:",
+    subject: "Нова кандидатура – Курир Дрезден",
+    autoresp: "Благодарим Ви за интереса към Rumak Logistik GmbH (Дрезден). Моля, изпратете CV като отговор на този имейл или директно на dresden.delivery.jobs@gmail.com, за да ускорим обработката.",
+    name: "Име и фамилия",
+    phone: "Телефон (WhatsApp)",
+    email: "Имейл",
+    city: "Град / Местоположение",
+    license: "Шофьорска книжка",
+    choose: "Изберете…",
+    b: "B (леки автомобили)",
+    ce: "CE (камиони)",
+    none: "Нямам",
+    start: "Готовност за старт",
+    startChoose: "Изберете…",
+    now: "Веднага",
+    twoWeeks: "До 2 седмици",
+    oneMonth: "До 1 месец",
+    langs: "Езици",
+    nolang: "Без език",
+    hintLang: "Език не е задължителен.",
+    note: "Бележка (по желание)",
+    consent: "Съгласен/на съм данните ми да бъдат използвани за подбор по тази позиция.",
+    submit: "Изпрати кандидатура",
+    bottomNote: "След изпращане ще получите автоматичен имейл с инструкции да прикачите CV.",
+    direct: 'Забележка: Ако предпочитате директно, изпратете CV + телефон на <strong>dresden.delivery.jobs@gmail.com</strong> и в тема напишете <strong>DRIVER BG-FB</strong>.'
+  },
+  en: {
+    pill: "Rumak Logistik GmbH – Amazon Partner",
+    title: "Courier / Driver – Dresden",
+    sub: "Immediate start · €15.70/hr + €14/day · Housing available",
+    langLabel: "Language:",
+    subject: "New Application – Courier Dresden",
+    autoresp: "Thank you for your interest in Rumak Logistik GmbH (Dresden). Please reply with your CV attached or email it directly to dresden.delivery.jobs@gmail.com to speed things up.",
+    name: "Full name",
+    phone: "Phone (WhatsApp)",
+    email: "Email",
+    city: "City / Location",
+    license: "Driving licence",
+    choose: "Select…",
+    b: "B (cars)",
+    ce: "CE (trucks)",
+    none: "None",
+    start: "Earliest start",
+    startChoose: "Select…",
+    now: "Immediately",
+    twoWeeks: "Within 2 weeks",
+    oneMonth: "Within 1 month",
+    langs: "Languages",
+    nolang: "No language",
+    hintLang: "Language is not required.",
+    note: "Note (optional)",
+    consent: "I agree that my data may be used for recruitment for this role.",
+    submit: "Submit application",
+    bottomNote: "After submitting you’ll receive an automatic email with instructions to attach your CV.",
+    direct: 'Note: You can also email your CV + phone to <strong>dresden.delivery.jobs@gmail.com</strong> with subject <strong>DRIVER EN-FB</strong>.'
+  },
+  de: {
+    pill: "Rumak Logistik GmbH – Partner von Amazon",
+    title: "Kurier / Fahrer – Dresden",
+    sub: "Sofortstart · 15,70 € / Std. + 14 € / Tag · Unterkunft möglich",
+    langLabel: "Sprache:",
+    subject: "Neue Bewerbung – Kurier Dresden",
+    autoresp: "Vielen Dank für Ihr Interesse an Rumak Logistik GmbH (Dresden). Bitte antworten Sie mit angehängtem Lebenslauf oder senden Sie ihn direkt an dresden.delivery.jobs@gmail.com, um die Bearbeitung zu beschleunigen.",
+    name: "Vor- und Nachname",
+    phone: "Telefon (WhatsApp)",
+    email: "E-Mail",
+    city: "Stadt / Ort",
+    license: "Führerschein",
+    choose: "Auswählen…",
+    b: "B (PKW)",
+    ce: "CE (LKW)",
+    none: "Keiner",
+    start: "Frühester Start",
+    startChoose: "Auswählen…",
+    now: "Sofort",
+    twoWeeks: "Innerhalb 2 Wochen",
+    oneMonth: "Innerhalb 1 Monats",
+    langs: "Sprachen",
+    nolang: "Keine Sprache",
+    hintLang: "Sprache ist nicht erforderlich.",
+    note: "Notiz (optional)",
+    consent: "Ich bin einverstanden, dass meine Daten für das Recruiting für diese Stelle verwendet werden.",
+    submit: "Bewerbung senden",
+    bottomNote: "Nach dem Senden erhalten Sie eine automatische E-Mail mit Anweisungen, Ihren Lebenslauf anzuhängen.",
+    direct: 'Hinweis: Sie können Ihren Lebenslauf + Telefonnummer auch an <strong>dresden.delivery.jobs@gmail.com</strong> senden, Betreff <strong>DRIVER DE-FB</strong>.'
+  },
+  uk: {
+    pill: "Rumak Logistik GmbH – партнер Amazon",
+    title: "Кур'єр / Водій – Дрезден",
+    sub: "Негайний старт · 15,70 €/год + 14 €/день · Житло надається",
+    langLabel: "Мова:",
+    subject: "Нова заявка – Кур'єр Дрезден",
+    autoresp: "Дякуємо за інтерес до Rumak Logistik GmbH (Дрезден). Будь ласка, надішліть резюме у відповідь або на адресу dresden.delivery.jobs@gmail.com, щоб пришвидшити обробку.",
+    name: "Ім’я та прізвище",
+    phone: "Телефон (WhatsApp)",
+    email: "Ел. пошта",
+    city: "Місто / Локація",
+    license: "Водійське посвідчення",
+    choose: "Вибрати…",
+    b: "B (легкові авто)",
+    ce: "CE (вантажівки)",
+    none: "Немає",
+    start: "Найраніший старт",
+    startChoose: "Вибрати…",
+    now: "Негайно",
+    twoWeeks: "Протягом 2 тижнів",
+    oneMonth: "Протягом 1 місяця",
+    langs: "Мови",
+    nolang: "Без мови",
+    hintLang: "Знання мови не обов’язкове.",
+    note: "Примітка (за бажанням)",
+    consent: "Погоджуюся на використання моїх даних для відбору на цю позицію.",
+    submit: "Надіслати заявку",
+    bottomNote: "Після відправлення ви отримаєте лист з інструкціями, як додати резюме.",
+    direct: 'Примітка: Можна також надіслати резюме + телефон на <strong>dresden.delivery.jobs@gmail.com</strong> із темою <strong>DRIVER UA-FB</strong>.'
+  }
+};
+
+function setLang(lang) {
+  const i = t[lang] || t.bg;
+  document.documentElement.lang = lang;
+  // Header
+  byId('hdr-pill').textContent = i.pill;
+  byId('hdr-title').textContent = i.title;
+  byId('hdr-sub').textContent = i.sub;
+  byId('lang-label').textContent = i.langLabel;
+  // Hidden fields
+  byId('fs-subject').value = i.subject;
+  byId('fs-autoresponse').value = i.autoresp;
+  byId('fs-next').value = 'thankyou.html?lang=' + lang;
+  // Labels & placeholders
+  byId('lbl-name').textContent = i.name;
+  byId('lbl-phone').textContent = i.phone;
+  byId('lbl-email').textContent = i.email;
+  byId('lbl-city').textContent = i.city;
+  byId('lbl-license').textContent = i.license;
+  setSelectOptions(lang, i);
+  byId('lbl-start').textContent = i.start;
+  byId('lbl-lang').textContent = i.langs;
+  byId('hint-lang').textContent = i.hintLang;
+  byId('lbl-note').textContent = i.note;
+  byId('lbl-consent').textContent = i.consent;
+  byId('btn-submit').textContent = i.submit;
+  byId('note-bottom').textContent = i.bottomNote;
+  byId('note-direct').innerHTML = i.direct;
+  // Placeholders
+  const ph = {
+    bg: ["Иван Петров","+49 151 23456789","name@example.com","Дрезден / Лайпциг / ...","Кратка информация или въпрос…"],
+    en: ["Ivan Petrov","+49 151 23456789","name@example.com","Dresden / Leipzig / ...","Short note or question…"],
+    de: ["Ivan Petrov","+49 151 23456789","name@example.com","Dresden / Leipzig / ...","Kurze Notiz oder Frage …"],
+    uk: ["Ivan Petrov","+49 151 23456789","name@example.com","Дрезден / Лейпциг / ...","Коротка примітка або запитання…"]
+  }[lang];
+  byId('inp-name').placeholder = ph[0];
+  byId('inp-phone').placeholder = ph[1];
+  byId('inp-email').placeholder = ph[2];
+  byId('inp-city').placeholder = ph[3];
+  byId('inp-note').placeholder = ph[4];
+}
+
+function setSelectOptions(lang, i) {
+  byId('opt-choose').textContent = i.choose;
+  byId('opt-b').textContent = i.b;
+  byId('opt-ce').textContent = i.ce;
+  byId('opt-none').textContent = i.none;
+  byId('opt-start-choose').textContent = i.startChoose;
+  byId('opt-now').textContent = i.now;
+  byId('opt-2w').textContent = i.twoWeeks;
+  byId('opt-1m').textContent = i.oneMonth;
+  byId('opt-nolang').textContent = i.nolang;
+}
+
+function byId(id){ return document.getElementById(id); }
+
+document.getElementById('lang').addEventListener('change', (e)=> setLang(e.target.value));
+// Initialize from URL ?lang=xx or default bg
+const urlLang = new URLSearchParams(location.search).get('lang') || 'bg';
+document.getElementById('lang').value = urlLang;
+setLang(urlLang);
+</script>
+</body>
+</html>
