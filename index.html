@@ -53,14 +53,12 @@
 
   <main>
     <div class="card">
-      <!-- Replace the email value below with your final recruiting email -->
       <form id="apply-form" action="https://formsubmit.co/dresden.delivery.jobs@gmail.com" method="POST">
-        <!-- formsubmit controls (values will be set by JS based on language) -->
         <input type="hidden" name="_subject" id="fs-subject" value="Нова кандидатура – Курир Дрезден">
         <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_autoresponse" id="fs-autoresponse" value="Благодарим Ви за интереса към Rumak Logistik GmbH (Дрезден). Моля, изпратете CV като отговор на този имейл или директно на dresden.delivery.jobs@gmail.com, за да ускорим обработката.">
-        <input type="hidden" name="_next" id="fs-next" value="thankyou.html">
+        <input type="hidden" name="_next" id="fs-next" value="">
 
         <div class="row">
           <div style="flex:1 1 300px">
@@ -125,7 +123,6 @@
           <span id="lbl-consent">Съгласен/на съм данните ми да бъдат използвани за подбор по тази позиция.</span>
         </label>
 
-        <!-- Honeypot -->
         <input type="text" name="_honey" style="display:none">
 
         <div class="actions">
@@ -271,22 +268,20 @@ const t = {
 function setLang(lang) {
   const i = t[lang] || t.bg;
   document.documentElement.lang = lang;
-  // Header
   byId('hdr-pill').textContent = i.pill;
   byId('hdr-title').textContent = i.title;
   byId('hdr-sub').textContent = i.sub;
   byId('lang-label').textContent = i.langLabel;
-  // Hidden fields
   byId('fs-subject').value = i.subject;
   byId('fs-autoresponse').value = i.autoresp;
-  byId('fs-next').value = 'thankyou.html?lang=' + lang;
-  // Labels & placeholders
+  const thanks = new URL('thankyou.html', location.href).href + '?lang=' + lang;
+  byId('fs-next').value = thanks;
   byId('lbl-name').textContent = i.name;
   byId('lbl-phone').textContent = i.phone;
   byId('lbl-email').textContent = i.email;
   byId('lbl-city').textContent = i.city;
   byId('lbl-license').textContent = i.license;
-  setSelectOptions(lang, i);
+  setSelectOptions(i);
   byId('lbl-start').textContent = i.start;
   byId('lbl-lang').textContent = i.langs;
   byId('hint-lang').textContent = i.hintLang;
@@ -295,12 +290,14 @@ function setLang(lang) {
   byId('btn-submit').textContent = i.submit;
   byId('note-bottom').textContent = i.bottomNote;
   byId('note-direct').innerHTML = i.direct;
-  // Placeholders
+  setPlaceholders(lang);
+}
+function setPlaceholders(lang){
   const ph = {
     bg: ["Иван Петров","+49 151 23456789","name@example.com","Дрезден / Лайпциг / ...","Кратка информация или въпрос…"],
     en: ["Ivan Petrov","+49 151 23456789","name@example.com","Dresden / Leipzig / ...","Short note or question…"],
     de: ["Ivan Petrov","+49 151 23456789","name@example.com","Dresden / Leipzig / ...","Kurze Notiz oder Frage …"],
-    uk: ["Ivan Petrov","+49 151 23456789","name@example.com","Дрезден / Лейпциг / ...","Коротка примітка або запитання…"]
+    uk: ["Ivan Petrov","+49 151 23456789","name@example.com","Дрезден / Лейпціг / ...","Коротка примітка або запитання…"]
   }[lang];
   byId('inp-name').placeholder = ph[0];
   byId('inp-phone').placeholder = ph[1];
@@ -308,8 +305,7 @@ function setLang(lang) {
   byId('inp-city').placeholder = ph[3];
   byId('inp-note').placeholder = ph[4];
 }
-
-function setSelectOptions(lang, i) {
+function setSelectOptions(i){
   byId('opt-choose').textContent = i.choose;
   byId('opt-b').textContent = i.b;
   byId('opt-ce').textContent = i.ce;
@@ -320,11 +316,9 @@ function setSelectOptions(lang, i) {
   byId('opt-1m').textContent = i.oneMonth;
   byId('opt-nolang').textContent = i.nolang;
 }
-
 function byId(id){ return document.getElementById(id); }
 
 document.getElementById('lang').addEventListener('change', (e)=> setLang(e.target.value));
-// Initialize from URL ?lang=xx or default bg
 const urlLang = new URLSearchParams(location.search).get('lang') || 'bg';
 document.getElementById('lang').value = urlLang;
 setLang(urlLang);
