@@ -1,59 +1,49 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="bg">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thank you</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Благодарим Ви!</title>
   <style>
-    :root { --bg:#f7f7fb; --card:#ffffff; --accent:#1b7f3b; --text:#222; --muted:#666; }
-    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { max-width:720px; margin:60px auto; background:var(--card); padding:24px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
-    h1 { margin-top:0; }
-    .muted{ color:var(--muted); }
-    a.btn{ display:inline-block; background:var(--accent); color:#fff; padding:12px 16px; border-radius:10px; text-decoration:none; font-weight:700; margin-top:10px; }
+    body { font-family: Arial, sans-serif; text-align: center; margin: 50px; background: #fafafa; }
+    .box { background: #fff; padding: 25px; border-radius: 8px; max-width: 500px; margin: auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    h1 { color: green; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1 id="h1">Благодарим Ви! ✅</h1>
-    <p id="p1">Получихме Вашите данни. За да завършим кандидатурата, моля, изпратете CV на <strong>dresden.delivery.jobs@gmail.com</strong> (може да отговорите директно на автоматичния имейл).</p>
-    <p id="p2" class="muted">Ако имате въпрос, пишете ни – отговаряме бързо.</p>
-    <a id="btn" class="btn" href="mailto:dresden.delivery.jobs@gmail.com?subject=CV%20Courier%20Dresden">Отвори имейл за изпращане на CV</a>
+  <div class="box">
+    <h1 id="title">Благодарим Ви! ✅</h1>
+    <p id="text">
+      Вашата кандидатура е изпратена успешно. Нашият екип ще се свърже с Вас скоро, за да обсъдим следващите стъпки.
+    </p>
   </div>
 
 <script>
-const th = {
-  bg: {
-    h1: "Благодарим Ви! ✅",
-    p1: "Получихме Вашите данни. За да завършим кандидатурата, моля, изпратете CV на dresden.delivery.jobs@gmail.com (може да отговорите директно на автоматичния имейл).",
-    p2: "Ако имате въпрос, пишете ни – отговаряме бързо.",
-    btn: "Отвори имейл за изпращане на CV"
-  },
-  en: {
-    h1: "Thank you! ✅",
-    p1: "We received your details. To complete your application, please send your CV to dresden.delivery.jobs@gmail.com (you can reply to the auto-email).",
-    p2: "Questions? Drop us a message – we reply quickly.",
-    btn: "Open email to send CV"
-  },
-  de: {
-    h1: "Vielen Dank! ✅",
-    p1: "Wir haben Ihre Daten erhalten. Bitte senden Sie Ihren Lebenslauf an dresden.delivery.jobs@gmail.com (Sie können auf die automatische E-Mail antworten), um die Bewerbung abzuschließen.",
-    p2: "Bei Fragen schreiben Sie uns – wir antworten schnell.",
-    btn: "E-Mail zum Senden des Lebenslaufs öffnen"
-  },
-  uk: {
-    h1: "Дякуємо! ✅",
-    p1: "Ми отримали ваші дані. Щоб завершити заявку, надішліть резюме на dresden.delivery.jobs@gmail.com (можна відповісти на автоматичний лист).",
-    p2: "Якщо маєте запитання, пишіть нам — відповідаємо швидко.",
-    btn: "Відкрити лист для відправки резюме"
-  }
-};
-const lang = new URLSearchParams(location.search).get('lang') || 'bg';
-const i = th[lang] || th.bg;
-document.getElementById('h1').textContent = i.h1;
-document.getElementById('p1').textContent = i.p1;
-document.getElementById('p2').textContent = i.p2;
-document.getElementById('btn').textContent = i.btn;
+  // Translations
+  const translations = {
+    bg: {
+      title: "Благодарим Ви! ✅",
+      text: "Вашата кандидатура е изпратена успешно. Нашият екип ще се свърже с Вас скоро, за да обсъдим следващите стъпки."
+    },
+    en: {
+      title: "Thank you! ✅",
+      text: "Your application has been submitted successfully. Our team will contact you soon to discuss the next steps."
+    },
+    de: {
+      title: "Vielen Dank! ✅",
+      text: "Ihre Bewerbung wurde erfolgreich übermittelt. Unser Team wird Sie in Kürze kontaktieren, um die nächsten Schritte zu besprechen."
+    },
+    uk: {
+      title: "Дякуємо! ✅",
+      text: "Ваша заявка успішно надіслана. Наша команда зв'яжеться з вами найближчим часом, щоб обговорити наступні кроки."
+    }
+  };
+
+  // Detect lang from URL (e.g. thankyou.html?lang=de)
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get("lang") || "bg";
+  document.getElementById("title").textContent = translations[lang].title;
+  document.getElementById("text").textContent = translations[lang].text;
 </script>
 </body>
 </html>
